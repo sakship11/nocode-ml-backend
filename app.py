@@ -10,6 +10,19 @@ import numpy as np
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "status": "NoCode ML Backend Running ✅",
+        "endpoints": [
+            "/upload (POST)",
+            "/preprocess (POST)",
+            "/split (POST)",
+            "/train (POST)"
+        ]
+    })
+
+
 # Global dataset and split
 dataset = None
 X_train = X_test = y_train = y_test = None
